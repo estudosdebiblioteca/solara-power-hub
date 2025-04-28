@@ -11,7 +11,7 @@ const Unauthorized = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
       <div className="text-center max-w-md">
-        <h1 className="text-4xl font-bold text-solar-blue mb-4">Access Denied</h1>
+        <h1 className="text-4xl font-bold text-solar-blue mb-4">Acesso Negado</h1>
         <div className="bg-white p-8 rounded-lg shadow-md">
           <svg
             className="h-16 w-16 text-solar-orange mx-auto mb-4"
@@ -27,14 +27,14 @@ const Unauthorized = () => {
             />
           </svg>
           <p className="text-gray-700 mb-6">
-            You don't have permission to access this page. Please contact your administrator if you believe this is a mistake.
+            Você não tem permissão para acessar esta página. Por favor, entre em contato com o administrador se acredita que isso é um erro.
           </p>
           <div className="flex flex-col space-y-2">
             <Button
               onClick={() => navigate(isAuthenticated ? "/dashboard" : "/login")}
               className="w-full bg-solar-blue hover:bg-blue-700"
             >
-              {isAuthenticated ? "Go to Dashboard" : "Return to Login"}
+              {isAuthenticated ? "Ir para Dashboard" : "Voltar para Login"}
             </Button>
           </div>
         </div>

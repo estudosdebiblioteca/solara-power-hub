@@ -66,46 +66,46 @@ const Clients = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Client Management</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Gerenciamento de Clientes</h1>
         <Button className="mt-2 sm:mt-0">
-          <Plus className="mr-2 h-4 w-4" /> Add New Client
+          <Plus className="mr-2 h-4 w-4" /> Adicionar Novo Cliente
         </Button>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Clients</CardTitle>
+            <CardTitle className="text-sm font-medium">Total de Clientes</CardTitle>
             <User className="h-4 w-4 text-solar-blue" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{clients.length}</div>
             <p className="text-xs text-muted-foreground">
-              {clients.filter(c => c.status === "active").length} active clients
+              {clients.filter(c => c.status === "active").length} clientes ativos
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Plants</CardTitle>
+            <CardTitle className="text-sm font-medium">Total de Usinas</CardTitle>
             <Sun className="h-4 w-4 text-solar-yellow" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{clients.reduce((acc, client) => acc + client.plants, 0)}</div>
             <p className="text-xs text-muted-foreground">
-              Managed for all clients
+              Gerenciadas para todos os clientes
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Capacity</CardTitle>
+            <CardTitle className="text-sm font-medium">Capacidade Total</CardTitle>
             <Sun className="h-4 w-4 text-solar-green" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">120 kW</div>
             <p className="text-xs text-muted-foreground">
-              All client installations
+              Todas as instalações de clientes
             </p>
           </CardContent>
         </Card>
@@ -113,15 +113,15 @@ const Clients = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Client Directory</CardTitle>
+          <CardTitle>Diretório de Clientes</CardTitle>
           <CardDescription>
-            Manage your solar power clients
+            Gerencie seus clientes de energia solar
           </CardDescription>
           <div className="flex w-full max-w-sm items-center space-x-2 mt-4">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input 
-                placeholder="Search clients..." 
+                placeholder="Buscar clientes..." 
                 className="pl-9"
                 type="search"
               />
@@ -131,11 +131,11 @@ const Clients = () => {
         <CardContent>
           <div className="rounded-md border">
             <div className="grid grid-cols-6 bg-muted p-3 text-sm font-medium">
-              <div className="col-span-2">Name</div>
-              <div className="hidden md:block">Contact</div>
-              <div className="text-center">Plants</div>
-              <div className="hidden md:block">Capacity</div>
-              <div className="text-right">Actions</div>
+              <div className="col-span-2">Nome</div>
+              <div className="hidden md:block">Contato</div>
+              <div className="text-center">Usinas</div>
+              <div className="hidden md:block">Capacidade</div>
+              <div className="text-right">Ações</div>
             </div>
             {clients.map((client) => (
               <div key={client.id} className="grid grid-cols-6 items-center p-3 text-sm border-t">
@@ -160,8 +160,8 @@ const Clients = () => {
                   <div className="font-medium">{client.totalCapacity}</div>
                 </div>
                 <div className="flex justify-end space-x-2">
-                  <Button variant="outline" size="sm">View</Button>
-                  <Button variant="outline" size="sm">Edit</Button>
+                  <Button variant="outline" size="sm">Ver</Button>
+                  <Button variant="outline" size="sm">Editar</Button>
                 </div>
               </div>
             ))}

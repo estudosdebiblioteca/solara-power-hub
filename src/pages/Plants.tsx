@@ -65,7 +65,7 @@ const Plants = () => {
       return (
         <div className="flex items-center text-orange-600">
           <AlertCircle className="h-4 w-4 mr-1" />
-          <span>Maintenance</span>
+          <span>Manutenção</span>
         </div>
       );
     }
@@ -74,7 +74,7 @@ const Plants = () => {
       return (
         <div className="flex items-center text-amber-600">
           <AlertCircle className="h-4 w-4 mr-1" />
-          <span>Alert{alerts > 1 ? 's' : ''}</span>
+          <span>Alerta{alerts > 1 ? 's' : ''}</span>
         </div>
       );
     }
@@ -82,7 +82,7 @@ const Plants = () => {
     return (
       <div className="flex items-center text-green-600">
         <CheckCircle className="h-4 w-4 mr-1" />
-        <span>Operational</span>
+        <span>Operacional</span>
       </div>
     );
   };
@@ -90,46 +90,46 @@ const Plants = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Solar Plants</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Usinas Solares</h1>
         <Button className="mt-2 sm:mt-0">
-          <Plus className="mr-2 h-4 w-4" /> Add New Plant
+          <Plus className="mr-2 h-4 w-4" /> Adicionar Nova Usina
         </Button>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Plants</CardTitle>
+            <CardTitle className="text-sm font-medium">Total de Usinas</CardTitle>
             <Sun className="h-4 w-4 text-solar-blue" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{plants.length}</div>
             <p className="text-xs text-muted-foreground">
-              {plants.filter(p => p.status === "operational").length} operational plants
+              {plants.filter(p => p.status === "operational").length} usinas operacionais
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Capacity</CardTitle>
+            <CardTitle className="text-sm font-medium">Capacidade Total</CardTitle>
             <Zap className="h-4 w-4 text-solar-yellow" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">5.8 MW</div>
             <p className="text-xs text-muted-foreground">
-              Average efficiency: 87%
+              Eficiência média: 87%
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Clients</CardTitle>
+            <CardTitle className="text-sm font-medium">Total de Clientes</CardTitle>
             <Users className="h-4 w-4 text-solar-green" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">25</div>
             <p className="text-xs text-muted-foreground">
-              Across all plants
+              Em todas as usinas
             </p>
           </CardContent>
         </Card>
@@ -137,9 +137,9 @@ const Plants = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Plant Overview</CardTitle>
+          <CardTitle>Visão Geral das Usinas</CardTitle>
           <CardDescription>
-            Manage and monitor all solar plants
+            Gerencie e monitore todas as usinas solares
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -164,16 +164,16 @@ const Plants = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                   <div>
-                    <p className="text-sm text-muted-foreground">Capacity</p>
+                    <p className="text-sm text-muted-foreground">Capacidade</p>
                     <p className="font-medium">{plant.capacity}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Clients</p>
+                    <p className="text-sm text-muted-foreground">Clientes</p>
                     <p className="font-medium">{plant.clients}</p>
                   </div>
                   <div>
                     <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="text-muted-foreground">Efficiency</span>
+                      <span className="text-muted-foreground">Eficiência</span>
                       <span>{plant.efficiency}%</span>
                     </div>
                     <Progress value={plant.efficiency} className="h-1.5" />
@@ -181,8 +181,8 @@ const Plants = () => {
                 </div>
                 
                 <div className="mt-4 flex justify-end space-x-2">
-                  <Button variant="outline" size="sm">Details</Button>
-                  <Button variant="outline" size="sm">Manage</Button>
+                  <Button variant="outline" size="sm">Detalhes</Button>
+                  <Button variant="outline" size="sm">Gerenciar</Button>
                 </div>
               </div>
             ))}
