@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -119,12 +118,14 @@ const Clients = () => {
             Manage your solar power clients
           </CardDescription>
           <div className="flex w-full max-w-sm items-center space-x-2 mt-4">
-            <Input 
-              placeholder="Search clients..." 
-              className="flex-1"
-              type="search"
-              icon={<Search className="h-4 w-4" />}
-            />
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input 
+                placeholder="Search clients..." 
+                className="pl-9"
+                type="search"
+              />
+            </div>
           </div>
         </CardHeader>
         <CardContent>
