@@ -28,10 +28,10 @@ const CompanyDashboard = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Company Dashboard</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Painel da Empresa</h1>
         <div className="flex mt-2 sm:mt-0">
           <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-            Last Updated: {new Date().toLocaleTimeString()}
+            Última Atualização: {new Date().toLocaleTimeString()}
           </span>
         </div>
       </div>
@@ -39,49 +39,49 @@ const CompanyDashboard = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Plants</CardTitle>
+            <CardTitle className="text-sm font-medium">Total de Usinas</CardTitle>
             <Sun className="h-4 w-4 text-solar-blue" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{plantStats.totalPlants}</div>
             <p className="text-xs text-muted-foreground">
-              {plantStats.activePlants} active plants
+              {plantStats.activePlants} usinas ativas
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Capacity</CardTitle>
+            <CardTitle className="text-sm font-medium">Capacidade Total</CardTitle>
             <Zap className="h-4 w-4 text-solar-yellow" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{plantStats.totalCapacity}</div>
             <p className="text-xs text-muted-foreground">
-              {plantStats.averageEfficiency} average efficiency
+              {plantStats.averageEfficiency} de eficiência média
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Clients</CardTitle>
+            <CardTitle className="text-sm font-medium">Clientes</CardTitle>
             <Users className="h-4 w-4 text-solar-green" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{clientStats.totalClients}</div>
             <p className="text-xs text-muted-foreground">
-              {clientStats.newClientsThisMonth} new this month
+              {clientStats.newClientsThisMonth} novos este mês
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Daily Production</CardTitle>
+            <CardTitle className="text-sm font-medium">Produção Diária</CardTitle>
             <TrendingUp className="h-4 w-4 text-solar-orange" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{productionStats.dailyProduction}</div>
             <p className="text-xs text-muted-foreground">
-              {productionStats.change} from yesterday
+              {productionStats.change} em relação a ontem
             </p>
           </CardContent>
         </Card>
@@ -90,9 +90,9 @@ const CompanyDashboard = () => {
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Plants Overview</CardTitle>
+            <CardTitle>Visão Geral das Usinas</CardTitle>
             <CardDescription>
-              Status of all solar plants under management
+              Status de todas as usinas solares sob gerenciamento
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -111,7 +111,7 @@ const CompanyDashboard = () => {
                   </div>
                   <div className="text-right">
                     <p>{plant.capacity}</p>
-                    <p className="text-sm text-muted-foreground">{plant.efficiency} efficient</p>
+                    <p className="text-sm text-muted-foreground">{plant.efficiency} de eficiência</p>
                   </div>
                 </div>
               ))}
@@ -121,19 +121,19 @@ const CompanyDashboard = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Client Activity</CardTitle>
+            <CardTitle>Atividade dos Clientes</CardTitle>
             <CardDescription>
-              Recent client actions and updates
+              Ações e atualizações recentes de clientes
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {[
-                { client: "John Smith", action: "Viewed plant report", time: "10 minutes ago" },
-                { client: "Maria Garcia", action: "Requested maintenance", time: "1 hour ago" },
-                { client: "Robert Lee", action: "Updated payment method", time: "3 hours ago" },
-                { client: "Emma Johnson", action: "Added new user", time: "5 hours ago" },
-                { client: "James Wilson", action: "Downloaded invoice", time: "Yesterday" },
+                { client: "John Smith", action: "Visualizou relatório da usina", time: "10 minutos atrás" },
+                { client: "Maria Garcia", action: "Solicitou manutenção", time: "1 hora atrás" },
+                { client: "Robert Lee", action: "Atualizou método de pagamento", time: "3 horas atrás" },
+                { client: "Emma Johnson", action: "Adicionou novo usuário", time: "5 horas atrás" },
+                { client: "James Wilson", action: "Baixou fatura", time: "Ontem" },
               ].map((activity, index) => (
                 <div key={index} className="flex items-start space-x-3 border-b last:border-0 py-2">
                   <div className="h-8 w-8 rounded-full bg-solar-blue bg-opacity-10 flex items-center justify-center text-solar-blue">

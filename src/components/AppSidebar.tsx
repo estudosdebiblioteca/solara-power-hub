@@ -30,20 +30,20 @@ export function AppSidebar() {
   const { logout, user, isCompany } = useAuth();
 
   const companyMenuItems = [
-    { icon: LayoutDashboard, label: "Dashboard", to: "/dashboard" },
-    { icon: Sun, label: "Solar Plants", to: "/plants" },
-    { icon: Users, label: "Clients", to: "/clients" },
-    { icon: BarChart3, label: "Analytics", to: "/analytics" },
-    { icon: FileText, label: "Reports", to: "/reports" },
-    { icon: Settings, label: "Settings", to: "/settings" },
+    { icon: LayoutDashboard, label: "Painel", to: "/dashboard" },
+    { icon: Sun, label: "Usinas Solares", to: "/plants" },
+    { icon: Users, label: "Clientes", to: "/clients" },
+    { icon: BarChart3, label: "Análises", to: "/analytics" },
+    { icon: FileText, label: "Relatórios", to: "/reports" },
+    { icon: Settings, label: "Configurações", to: "/settings" },
   ];
 
   const clientMenuItems = [
-    { icon: LayoutDashboard, label: "Dashboard", to: "/dashboard" },
-    { icon: Sun, label: "My Plants", to: "/my-plants" },
-    { icon: BarChart3, label: "Performance", to: "/performance" },
-    { icon: FileText, label: "Reports", to: "/reports" },
-    { icon: Settings, label: "Settings", to: "/settings" },
+    { icon: LayoutDashboard, label: "Painel", to: "/dashboard" },
+    { icon: Sun, label: "Minhas Usinas", to: "/my-plants" },
+    { icon: BarChart3, label: "Desempenho", to: "/performance" },
+    { icon: FileText, label: "Relatórios", to: "/reports" },
+    { icon: Settings, label: "Configurações", to: "/settings" },
   ];
 
   const menuItems = isCompany ? companyMenuItems : clientMenuItems;
@@ -63,7 +63,7 @@ export function AppSidebar() {
       
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{isCompany ? "Company Portal" : "Client Portal"}</SidebarGroupLabel>
+          <SidebarGroupLabel>{isCompany ? "Portal da Empresa" : "Portal do Cliente"}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -111,7 +111,7 @@ export function AppSidebar() {
             onClick={logout}
           >
             <LogOut className="mr-2 h-4 w-4" />
-            Logout
+            Sair
           </Button>
         </div>
       </SidebarFooter>

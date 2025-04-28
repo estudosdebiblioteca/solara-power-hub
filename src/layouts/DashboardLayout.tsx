@@ -23,12 +23,12 @@ const DashboardLayout = () => {
                 </Button>
               </SidebarTrigger>
               <h2 className="font-semibold text-lg">
-                {user?.role === "company" ? "Company Dashboard" : "Client Dashboard"}
+                {user?.role === "company" ? "Painel da Empresa" : "Painel do Cliente"}
               </h2>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm font-medium">
-                {new Date().toLocaleDateString("en-US", {
+                {new Date().toLocaleDateString("pt-BR", {
                   weekday: "long",
                   year: "numeric",
                   month: "long",
