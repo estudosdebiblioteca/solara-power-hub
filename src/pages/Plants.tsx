@@ -1,12 +1,15 @@
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sun, Plus, Users, MapPin, Zap, AlertCircle, CheckCircle } from "lucide-react";
 
 const Plants = () => {
-  // Mock data for solar plants
+  const navigate = useNavigate();
+  
+  // Mock data para usinas solares
   const plants = [
     {
       id: 1,
@@ -85,6 +88,15 @@ const Plants = () => {
         <span>Operacional</span>
       </div>
     );
+  };
+
+  // Handlers para os botões de navegação
+  const handleDetails = (plantId: number) => {
+    navigate(`/plants/${plantId}`);
+  };
+
+  const handleManage = (plantId: number) => {
+    navigate(`/plants/${plantId}/manage`);
   };
 
   return (
@@ -181,8 +193,20 @@ const Plants = () => {
                 </div>
                 
                 <div className="mt-4 flex justify-end space-x-2">
-                  <Button variant="outline" size="sm">Detalhes</Button>
-                  <Button variant="outline" size="sm">Gerenciar</Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => handleDetails(plant.id)}
+                  >
+                    Detalhes
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => handleManage(plant.id)}
+                  >
+                    Gerenciar
+                  </Button>
                 </div>
               </div>
             ))}

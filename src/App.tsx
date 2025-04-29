@@ -14,6 +14,8 @@ import Unauthorized from "./pages/Unauthorized";
 import CompanyDashboard from "./pages/CompanyDashboard";
 import ClientDashboard from "./pages/ClientDashboard";
 import Plants from "./pages/Plants";
+import PlantDetails from "./pages/PlantDetails";
+import PlantManagement from "./pages/PlantManagement";
 import Clients from "./pages/Clients";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,22 @@ const App = () => (
                 element={
                   <ProtectedRoute allowedRoles={["company"]}>
                     <Plants />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/plants/:id" 
+                element={
+                  <ProtectedRoute allowedRoles={["company"]}>
+                    <PlantDetails />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/plants/:id/manage" 
+                element={
+                  <ProtectedRoute allowedRoles={["company"]}>
+                    <PlantManagement />
                   </ProtectedRoute>
                 } 
               />
