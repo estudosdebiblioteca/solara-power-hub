@@ -3,7 +3,8 @@ import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { User, Calendar, Zap, PiggyBank, Percent } from "lucide-react";
+import { User, Calendar, Zap, PiggyBank, Percent, FileInvoice } from "lucide-react";
+import { toast } from "sonner";
 
 interface ClientViewProps {
   isOpen: boolean;
@@ -20,6 +21,12 @@ interface ClientViewProps {
 }
 
 const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
+  const handleGenerateInvoice = () => {
+    toast.success(`Fatura gerada para ${client.name}`);
+    // Em uma implementação real, aqui redirecionaria para uma página 
+    // de fatura ou abriria um modal com os detalhes da fatura
+  };
+  
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-md">
@@ -88,7 +95,15 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
           </Card>
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="flex justify-between">
+          <Button 
+            variant="outline" 
+            onClick={handleGenerateInvoice}
+            className="flex items-center"
+          >
+            <FileInvoice className="h-4 w-4 mr-2" />
+            Gerar Fatura
+          </Button>
           <Button onClick={onClose}>Fechar</Button>
         </DialogFooter>
       </DialogContent>
@@ -97,3 +112,4 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
 };
 
 export default ClientView;
+

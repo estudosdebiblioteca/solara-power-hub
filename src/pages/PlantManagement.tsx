@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit } from "lucide-react";
+import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit, FileInvoice } from "lucide-react";
 import ClientView from "@/components/ClientView";
 import ClientEdit from "@/components/ClientEdit";
 import { toast } from "sonner";
@@ -108,6 +108,13 @@ const PlantManagement = () => {
     return clients.find(client => client.id === clientId) || clients[0];
   };
 
+  const handleGenerateInvoice = (clientId: number) => {
+    const client = getClientById(clientId);
+    toast.success(`Fatura gerada para ${client.name}`);
+    // Em uma implementação real, aqui redirecionaria para uma página 
+    // de fatura ou abriria um modal com os detalhes da fatura
+  };
+
   return (
     <div className="space-y-6">
       {viewingClient !== null && (
@@ -155,7 +162,7 @@ const PlantManagement = () => {
         Gerencie clientes e acompanhe o desempenho da usina solar
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium">Total de Clientes</CardTitle>
@@ -185,6 +192,17 @@ const PlantManagement = () => {
           <CardContent>
             <div className="text-2xl font-bold text-green-600">
               {stats.totalSavings}
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Capacidade</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold flex items-center">
+              <Zap className="mr-2 h-5 w-5 text-amber-500" />
+              {plant.capacity}
             </div>
           </CardContent>
         </Card>
@@ -269,6 +287,15 @@ const PlantManagement = () => {
                         <Edit className="h-4 w-4 mr-1" />
                         Editar
                       </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleGenerateInvoice(client.id)}
+                        className="flex items-center"
+                      >
+                        <FileInvoice className="h-4 w-4 mr-1" />
+                        Gerar Fatura
+                      </Button>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -282,3 +309,4 @@ const PlantManagement = () => {
 };
 
 export default PlantManagement;
+
