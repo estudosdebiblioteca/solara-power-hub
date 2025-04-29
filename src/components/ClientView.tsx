@@ -3,7 +3,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { User, Calendar, Zap, PiggyBank, Percent, FileInvoice } from "lucide-react";
+import { User, Calendar, Zap, PiggyBank, Percent, FileText } from "lucide-react";
 import { toast } from "sonner";
 
 interface ClientViewProps {
@@ -101,7 +101,7 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
             onClick={handleGenerateInvoice}
             className="flex items-center"
           >
-            <FileInvoice className="h-4 w-4 mr-2" />
+            <FileText className="h-4 w-4 mr-2" />
             Gerar Fatura
           </Button>
           <Button onClick={onClose}>Fechar</Button>
@@ -112,4 +112,3 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
 };
 
 export default ClientView;
-

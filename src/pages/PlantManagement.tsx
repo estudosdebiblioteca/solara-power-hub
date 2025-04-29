@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -11,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit, FileInvoice } from "lucide-react";
+import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit } from "lucide-react";
 import ClientView from "@/components/ClientView";
 import ClientEdit from "@/components/ClientEdit";
 import { toast } from "sonner";
@@ -293,7 +292,7 @@ const PlantManagement = () => {
                         onClick={() => handleGenerateInvoice(client.id)}
                         className="flex items-center"
                       >
-                        <FileInvoice className="h-4 w-4 mr-1" />
+                        <FileText className="h-4 w-4 mr-1" />
                         Gerar Fatura
                       </Button>
                     </div>
@@ -309,4 +308,3 @@ const PlantManagement = () => {
 };
 
 export default PlantManagement;
-
