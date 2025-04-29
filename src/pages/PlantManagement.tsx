@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,23 +11,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle } from "lucide-react";
+import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit } from "lucide-react";
+import ClientView from "@/components/ClientView";
+import ClientEdit from "@/components/ClientEdit";
+import { toast } from "sonner";
 
 const PlantManagement = () => {
   const { id } = useParams();
-  
-  // Mock data para uma usina específica e seus clientes
-  const plant = {
-    id: parseInt(id as string),
-    name: "Sunny Meadows",
-    location: "Arizona",
-    capacity: "1.2 MW",
-    clients: 5,
-    efficiency: 92,
-  };
-
-  // Dados simulados de clientes associados à usina
-  const clients = [
+  const [viewingClient, setViewingClient] = useState<number | null>(null);
+  const [editingClient, setEditingClient] = useState<number | null>(null);
+  const [clients, setClients] = useState([
     {
       id: 1,
       name: "João Silva",
@@ -73,7 +66,17 @@ const PlantManagement = () => {
       share: 20,
       since: "Mai 2023",
     },
-  ];
+  ]);
+  
+  // Mock data para uma usina específica e seus clientes
+  const plant = {
+    id: parseInt(id as string),
+    name: "Sunny Meadows",
+    location: "Arizona",
+    capacity: "1.2 MW",
+    clients: 5,
+    efficiency: 92,
+  };
 
   // Dados simulados de estatísticas gerais
   const stats = {
@@ -83,8 +86,47 @@ const PlantManagement = () => {
     availableCapacity: "15%",
   };
 
+  const handleViewClient = (clientId: number) => {
+    setViewingClient(clientId);
+  };
+
+  const handleEditClient = (clientId: number) => {
+    setEditingClient(clientId);
+  };
+
+  const handleSaveClientShare = (clientId: number, newShare: number) => {
+    setClients(clients.map(client => {
+      if (client.id === clientId) {
+        return { ...client, share: newShare };
+      }
+      return client;
+    }));
+    toast.success(`Participação do cliente atualizada para ${newShare}%`);
+  };
+
+  const getClientById = (clientId: number) => {
+    return clients.find(client => client.id === clientId) || clients[0];
+  };
+
   return (
     <div className="space-y-6">
+      {viewingClient !== null && (
+        <ClientView 
+          isOpen={viewingClient !== null}
+          onClose={() => setViewingClient(null)}
+          client={getClientById(viewingClient)}
+        />
+      )}
+      
+      {editingClient !== null && (
+        <ClientEdit
+          isOpen={editingClient !== null}
+          onClose={() => setEditingClient(null)}
+          client={getClientById(editingClient)}
+          onSave={handleSaveClientShare}
+        />
+      )}
+
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="sm" asChild>
@@ -198,12 +240,35 @@ const PlantManagement = () => {
                   <TableCell>{client.units}</TableCell>
                   <TableCell>{client.consumption}</TableCell>
                   <TableCell className="text-green-600">{client.saving}</TableCell>
-                  <TableCell>{client.share}%</TableCell>
+                  <TableCell>
+                    <div className="flex items-center">
+                      <div className="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+                        <div className="bg-blue-600 h-1.5 rounded-full" style={{ width: `${client.share}%` }}></div>
+                      </div>
+                      {client.share}%
+                    </div>
+                  </TableCell>
                   <TableCell>{client.since}</TableCell>
                   <TableCell>
                     <div className="flex space-x-2">
-                      <Button variant="outline" size="sm">Visualizar</Button>
-                      <Button variant="outline" size="sm">Editar</Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleViewClient(client.id)}
+                        className="flex items-center"
+                      >
+                        <Eye className="h-4 w-4 mr-1" />
+                        Visualizar
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleEditClient(client.id)}
+                        className="flex items-center"
+                      >
+                        <Edit className="h-4 w-4 mr-1" />
+                        Editar
+                      </Button>
                     </div>
                   </TableCell>
                 </TableRow>
