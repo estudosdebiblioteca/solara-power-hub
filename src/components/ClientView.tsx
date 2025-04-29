@@ -55,7 +55,7 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-2">
-                  <Zap className="h-4 w-4 text-amber-500" />
+                  <Zap className="h-4 w-4 text-solar-accent" />
                   <span className="text-sm font-medium">Consumo</span>
                 </div>
                 <p className="text-2xl font-bold mt-2">{client.consumption}</p>
@@ -66,10 +66,10 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-2">
-                  <PiggyBank className="h-4 w-4 text-green-500" />
+                  <PiggyBank className="h-4 w-4 text-solar-green" />
                   <span className="text-sm font-medium">Economia</span>
                 </div>
-                <p className="text-2xl font-bold text-green-600 mt-2">{client.saving}</p>
+                <p className="text-2xl font-bold text-solar-green mt-2">{client.saving}</p>
                 <p className="text-xs text-muted-foreground">Economia mensal</p>
               </CardContent>
             </Card>
@@ -78,13 +78,13 @@ const ClientView = ({ isOpen, onClose, client }: ClientViewProps) => {
           <Card>
             <CardContent className="pt-6">
               <div className="flex items-center space-x-2">
-                <Percent className="h-4 w-4 text-blue-500" />
+                <Percent className="h-4 w-4 text-solar-blue" />
                 <span className="text-sm font-medium">Participação na Usina</span>
               </div>
               <p className="text-2xl font-bold mt-2">{client.share}%</p>
               <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
                 <div 
-                  className="bg-blue-600 h-2.5 rounded-full" 
+                  className="bg-solar-blue h-2.5 rounded-full" 
                   style={{ width: `${client.share}%` }}
                 ></div>
               </div>

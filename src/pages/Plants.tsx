@@ -112,7 +112,7 @@ const Plants = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Total de Usinas</CardTitle>
-            <Sun className="h-4 w-4 text-solar-blue" />
+            <Sun className="h-4 w-4 text-solar-accent" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{plants.length}</div>
@@ -124,7 +124,7 @@ const Plants = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Capacidade Total</CardTitle>
-            <Zap className="h-4 w-4 text-solar-yellow" />
+            <Zap className="h-4 w-4 text-solar-accent" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">5.8 MW</div>
@@ -160,7 +160,7 @@ const Plants = () => {
               <div key={plant.id} className="border rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <div className="solar-gradient rounded p-2">
+                    <div className="admisun-gradient rounded p-2">
                       <Sun className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -188,7 +188,9 @@ const Plants = () => {
                       <span className="text-muted-foreground">Eficiência</span>
                       <span>{plant.efficiency}%</span>
                     </div>
-                    <Progress value={plant.efficiency} className="h-1.5" />
+                    <Progress value={plant.efficiency} className="h-1.5 bg-gray-200">
+                      <div className="h-full bg-solar-blue rounded-full" style={{ width: `${plant.efficiency}%` }}></div>
+                    </Progress>
                   </div>
                 </div>
                 
@@ -204,6 +206,7 @@ const Plants = () => {
                     variant="outline" 
                     size="sm"
                     onClick={() => handleManage(plant.id)}
+                    className="text-solar-accent border-solar-accent hover:bg-solar-accent/10"
                   >
                     Gerenciar
                   </Button>

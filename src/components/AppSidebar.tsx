@@ -52,11 +52,13 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="p-4">
         <div className="flex items-center space-x-2">
-          <div className="solar-gradient rounded-lg p-2">
-            <Sun className="h-6 w-6 text-white" />
-          </div>
+          <img 
+            src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
+            alt="AdmiSun Logo" 
+            className="h-10 w-10 rounded-lg"
+          />
           <div>
-            <h1 className="text-lg font-semibold text-white">Solara Power Hub</h1>
+            <h1 className="text-lg font-semibold text-white">AdmiSun</h1>
           </div>
         </div>
       </SidebarHeader>

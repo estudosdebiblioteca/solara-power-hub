@@ -10,11 +10,15 @@ const Index = () => {
       <header className="sticky top-0 z-40 w-full border-b bg-white">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="solar-gradient rounded-lg p-2">
-              <Sun className="h-6 w-6 text-white" />
+            <div className="rounded-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
+                alt="AdmiSun Logo" 
+                className="h-10 w-10" 
+              />
             </div>
             <span className="hidden font-bold sm:inline-block">
-              Solara Power Hub
+              AdmiSun
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
@@ -53,7 +57,7 @@ const Index = () => {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link to="/login">
-                    <Button className="solar-gradient border-0">Get Started</Button>
+                    <Button className="admisun-gradient border-0">Get Started</Button>
                   </Link>
                   <Link to="/contact">
                     <Button variant="outline">Contact Sales</Button>
@@ -76,7 +80,7 @@ const Index = () => {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm solar-gradient bg-clip-text text-transparent">
+                <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm admisun-gradient bg-clip-text text-transparent">
                   Key Features
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -91,7 +95,7 @@ const Index = () => {
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
               <div className="grid gap-6">
                 <div className="flex items-start gap-4">
-                  <Sun className="h-10 w-10 text-solar-blue" />
+                  <Sun className="h-10 w-10 text-solar-orange" />
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold">Plant Management</h3>
                     <p className="text-gray-500">
@@ -111,7 +115,7 @@ const Index = () => {
               </div>
               <div className="grid gap-6">
                 <div className="flex items-start gap-4">
-                  <BarChart3 className="h-10 w-10 text-solar-yellow" />
+                  <BarChart3 className="h-10 w-10 text-solar-accent" />
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold">Advanced Analytics</h3>
                     <p className="text-gray-500">
@@ -137,10 +141,12 @@ const Index = () => {
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:justify-between md:py-12">
           <div className="flex flex-col gap-2">
             <div className="flex items-center space-x-2">
-              <div className="solar-gradient rounded-lg p-1">
-                <Sun className="h-5 w-5 text-white" />
-              </div>
-              <span className="font-bold">Solara Power Hub</span>
+              <img 
+                src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
+                alt="AdmiSun Logo" 
+                className="h-8 w-8 rounded-lg" 
+              />
+              <span className="font-bold">AdmiSun</span>
             </div>
             <p className="text-sm text-gray-500">
               Efficient solar plant management for the clean energy revolution
@@ -161,7 +167,7 @@ const Index = () => {
           </div>
         </div>
         <div className="container py-4 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Solara Power Hub. All rights reserved.
+          &copy; {new Date().getFullYear()} AdmiSun. All rights reserved.
         </div>
       </footer>
     </div>
