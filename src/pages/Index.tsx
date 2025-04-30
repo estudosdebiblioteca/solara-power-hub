@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,12 +12,12 @@ const Index = () => {
             <div className="rounded-lg overflow-hidden">
               <img 
                 src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
-                alt="AdmiSun Logo" 
+                alt="AdmSun Logo" 
                 className="h-10 w-10" 
               />
             </div>
             <span className="hidden font-bold sm:inline-block">
-              AdmiSun
+              AdmSun
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
@@ -143,10 +142,10 @@ const Index = () => {
             <div className="flex items-center space-x-2">
               <img 
                 src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
-                alt="AdmiSun Logo" 
+                alt="AdmSun Logo" 
                 className="h-8 w-8 rounded-lg" 
               />
-              <span className="font-bold">AdmiSun</span>
+              <span className="font-bold">AdmSun</span>
             </div>
             <p className="text-sm text-gray-500">
               Efficient solar plant management for the clean energy revolution
@@ -167,7 +166,7 @@ const Index = () => {
           </div>
         </div>
         <div className="container py-4 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} AdmiSun. All rights reserved.
+          &copy; {new Date().getFullYear()} AdmSun. All rights reserved.
         </div>
       </footer>
     </div>

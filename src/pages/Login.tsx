@@ -24,7 +24,7 @@ const Login = () => {
       await login(email, password);
       toast({
         title: "Login realizado com sucesso",
-        description: "Bem-vindo ao Solara Power Hub",
+        description: "Bem-vindo ao AdmSun Power Hub",
       });
       navigate("/dashboard");
     } catch (error) {
@@ -42,7 +42,14 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-solar-blue">Solara Power Hub</h1>
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
+              alt="AdmSun Logo" 
+              className="h-16 w-16 rounded-lg"
+            />
+          </div>
+          <h1 className="text-4xl font-bold text-solar-blue">AdmSun Power Hub</h1>
           <p className="text-solar-gray mt-2">Sistema de Gerenciamento de Usinas Solares</p>
         </div>
         

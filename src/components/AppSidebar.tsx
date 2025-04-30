@@ -54,11 +54,11 @@ export function AppSidebar() {
         <div className="flex items-center space-x-2">
           <img 
             src="/lovable-uploads/a99768c4-dfe1-4bc3-b443-3763b7416d99.png" 
-            alt="AdmiSun Logo" 
+            alt="AdmSun Logo" 
             className="h-10 w-10 rounded-lg"
           />
           <div>
-            <h1 className="text-lg font-semibold text-white">AdmiSun</h1>
+            <h1 className="text-lg font-semibold text-white">AdmSun</h1>
           </div>
         </div>
       </SidebarHeader>

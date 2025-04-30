@@ -23,7 +23,7 @@ const DashboardLayout = () => {
                 </Button>
               </SidebarTrigger>
               <h2 className="font-semibold text-lg">
-                {user?.role === "company" ? "Painel da Empresa" : "Painel do Cliente"}
+                AdmSun - {user?.role === "company" ? "Painel da Empresa" : "Painel do Cliente"}
               </h2>
             </div>
             <div className="flex items-center space-x-4">
