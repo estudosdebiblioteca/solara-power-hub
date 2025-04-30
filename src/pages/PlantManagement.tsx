@@ -14,11 +14,13 @@ import { ArrowLeft, Users, User, Zap, FileText, Settings, PlusCircle, Eye, Edit 
 import ClientView from "@/components/ClientView";
 import ClientEdit from "@/components/ClientEdit";
 import { toast } from "sonner";
+import ClientForm from "@/components/ClientForm";
 
 const PlantManagement = () => {
   const { id } = useParams();
   const [viewingClient, setViewingClient] = useState<number | null>(null);
   const [editingClient, setEditingClient] = useState<number | null>(null);
+  const [showClientForm, setShowClientForm] = useState(false);
   const [clients, setClients] = useState([
     {
       id: 1,
@@ -132,6 +134,8 @@ const PlantManagement = () => {
           onSave={handleSaveClientShare}
         />
       )}
+      
+      <ClientForm open={showClientForm} onOpenChange={setShowClientForm} />
 
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
@@ -225,7 +229,7 @@ const PlantManagement = () => {
               Lista de clientes atualmente vinculados a esta usina solar
             </CardDescription>
           </div>
-          <Button>
+          <Button onClick={() => setShowClientForm(true)}>
             <PlusCircle className="mr-2 h-4 w-4" />
             Adicionar Cliente
           </Button>
