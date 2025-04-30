@@ -38,7 +38,7 @@ export const PlantForm = ({ open, onOpenChange }: PlantFormProps) => {
       usuario: "",
       nome_completo: "",
       codigo_cliente: "",
-      tipo_cliente: "",
+      tipo_cliente: "Geradora", // Default value set to "Geradora"
       login: "",
       pass: "",
       email: "",
@@ -137,7 +137,7 @@ export const PlantForm = ({ open, onOpenChange }: PlantFormProps) => {
                   <FormItem>
                     <FormLabel>Tipo de Cliente</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ex: Residencial" {...field} />
+                      <Input placeholder="Geradora" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
