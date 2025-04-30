@@ -1,11 +1,15 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Search, User, Sun, Mail, Phone } from "lucide-react";
+import ClientForm from "@/components/ClientForm";
 
 const Clients = () => {
+  // State for the ClientForm dialog
+  const [showClientForm, setShowClientForm] = useState(false);
+  
   // Mock data for clients
   const clients = [
     {
@@ -66,9 +70,11 @@ const Clients = () => {
 
   return (
     <div className="space-y-6">
+      <ClientForm open={showClientForm} onOpenChange={setShowClientForm} />
+      
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Gerenciamento de Clientes</h1>
-        <Button className="mt-2 sm:mt-0">
+        <Button className="mt-2 sm:mt-0" onClick={() => setShowClientForm(true)}>
           <Plus className="mr-2 h-4 w-4" /> Adicionar Novo Cliente
         </Button>
       </div>
