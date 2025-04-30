@@ -1,13 +1,15 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sun, Plus, Users, MapPin, Zap, AlertCircle, CheckCircle } from "lucide-react";
+import PlantForm from "@/components/PlantForm";
 
 const Plants = () => {
   const navigate = useNavigate();
+  const [openPlantForm, setOpenPlantForm] = useState(false);
   
   // Mock data para usinas solares
   const plants = [
@@ -103,7 +105,10 @@ const Plants = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Usinas Solares</h1>
-        <Button className="mt-2 sm:mt-0">
+        <Button 
+          className="mt-2 sm:mt-0" 
+          onClick={() => setOpenPlantForm(true)}
+        >
           <Plus className="mr-2 h-4 w-4" /> Adicionar Nova Usina
         </Button>
       </div>
@@ -216,6 +221,9 @@ const Plants = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Plant form dialog */}
+      <PlantForm open={openPlantForm} onOpenChange={setOpenPlantForm} />
     </div>
   );
 };
