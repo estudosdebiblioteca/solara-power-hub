@@ -17,6 +17,7 @@ import Plants from "./pages/Plants";
 import PlantDetails from "./pages/PlantDetails";
 import PlantManagement from "./pages/PlantManagement";
 import Clients from "./pages/Clients";
+import Configuration from "./pages/Configuration";
 
 const queryClient = new QueryClient();
 
@@ -119,7 +120,7 @@ const App = () => (
                 path="/settings" 
                 element={
                   <ProtectedRoute>
-                    <div className="p-4">Settings Page (Coming Soon)</div>
+                    <Configuration />
                   </ProtectedRoute>
                 } 
               />
