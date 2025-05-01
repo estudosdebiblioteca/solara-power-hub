@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
-import { Save, Database, Shield, Globe, Bell } from "lucide-react";
+import { Database, Globe, Shield, Save, Loader2 } from "lucide-react";
+import { configService } from "@/services/config.service";
 
 const Configuration = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [generalSettings, setGeneralSettings] = useState({
     companyName: "AdmSun",
     language: "pt-BR",
@@ -29,6 +31,67 @@ const Configuration = () => {
     passwordExpiry: 90,
     sessionTimeout: 30,
   });
+
+  useEffect(() => {
+    const fetchConfigurations = async () => {
+      setIsLoading(true);
+      try {
+        // Fetch general settings
+        const generalConfigs = await configService.getConfigByCategory('general');
+        if (generalConfigs.length > 0) {
+          const configMap = generalConfigs.reduce((acc: any, config) => {
+            acc[config.key] = config.value;
+            return acc;
+          }, {});
+          
+          setGeneralSettings({
+            companyName: configMap.companyName || "AdmSun",
+            language: configMap.language || "pt-BR",
+            enableNotifications: configMap.enableNotifications === "true",
+          });
+        }
+
+        // Fetch database settings
+        const dbConfigs = await configService.getConfigByCategory('database');
+        if (dbConfigs.length > 0) {
+          const configMap = dbConfigs.reduce((acc: any, config) => {
+            acc[config.key] = config.value;
+            return acc;
+          }, {});
+          
+          setDatabaseSettings({
+            host: configMap.host || "",
+            port: configMap.port || "3306",
+            username: configMap.username || "",
+            password: configMap.password || "",
+            database: configMap.database || "",
+          });
+        }
+
+        // Fetch security settings
+        const securityConfigs = await configService.getConfigByCategory('security');
+        if (securityConfigs.length > 0) {
+          const configMap = securityConfigs.reduce((acc: any, config) => {
+            acc[config.key] = config.value;
+            return acc;
+          }, {});
+          
+          setSecuritySettings({
+            twoFactorAuth: configMap.twoFactorAuth === "true",
+            passwordExpiry: parseInt(configMap.passwordExpiry || "90"),
+            sessionTimeout: parseInt(configMap.sessionTimeout || "30"),
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching configurations:", error);
+        toast.error("Erro ao carregar configurações");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchConfigurations();
+  }, []);
 
   const handleGeneralSettingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -70,23 +133,69 @@ const Configuration = () => {
     }
   };
 
-  const saveGeneralSettings = () => {
-    // In a real app, this would save to Supabase or API
-    console.log("Saving general settings:", generalSettings);
-    toast.success("Configurações gerais salvas com sucesso!");
+  const saveGeneralSettings = async () => {
+    try {
+      const success = await configService.saveBulkConfig([
+        { key: "companyName", value: generalSettings.companyName, category: "general" },
+        { key: "language", value: generalSettings.language, category: "general" },
+        { key: "enableNotifications", value: generalSettings.enableNotifications.toString(), category: "general" },
+      ]);
+      
+      if (success) {
+        toast.success("Configurações gerais salvas com sucesso!");
+      }
+    } catch (error) {
+      console.error("Error saving general settings:", error);
+      toast.error("Erro ao salvar configurações gerais");
+    }
   };
 
-  const saveDatabaseSettings = () => {
-    // In a real app, this would save to Supabase or API
-    console.log("Saving database settings:", databaseSettings);
-    toast.success("Configurações de banco de dados salvas com sucesso!");
+  const saveDatabaseSettings = async () => {
+    try {
+      const success = await configService.saveBulkConfig([
+        { key: "host", value: databaseSettings.host, category: "database" },
+        { key: "port", value: databaseSettings.port, category: "database" },
+        { key: "username", value: databaseSettings.username, category: "database" },
+        { key: "password", value: databaseSettings.password, category: "database" },
+        { key: "database", value: databaseSettings.database, category: "database" },
+      ]);
+      
+      if (success) {
+        toast.success("Configurações de banco de dados salvas com sucesso!");
+      }
+    } catch (error) {
+      console.error("Error saving database settings:", error);
+      toast.error("Erro ao salvar configurações de banco de dados");
+    }
   };
 
-  const saveSecuritySettings = () => {
-    // In a real app, this would save to Supabase or API
-    console.log("Saving security settings:", securitySettings);
-    toast.success("Configurações de segurança salvas com sucesso!");
+  const saveSecuritySettings = async () => {
+    try {
+      const success = await configService.saveBulkConfig([
+        { key: "twoFactorAuth", value: securitySettings.twoFactorAuth.toString(), category: "security" },
+        { key: "passwordExpiry", value: securitySettings.passwordExpiry.toString(), category: "security" },
+        { key: "sessionTimeout", value: securitySettings.sessionTimeout.toString(), category: "security" },
+      ]);
+      
+      if (success) {
+        toast.success("Configurações de segurança salvas com sucesso!");
+      }
+    } catch (error) {
+      console.error("Error saving security settings:", error);
+      toast.error("Erro ao salvar configurações de segurança");
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="container py-6 flex items-center justify-center min-h-[60vh]">
+        <div className="flex flex-col items-center gap-2">
+          <Loader2 className="h-8 w-8 animate-spin text-solar-blue" />
+          <p className="text-muted-foreground">Carregando configurações...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container py-6 space-y-6">
